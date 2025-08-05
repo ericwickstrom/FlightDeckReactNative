@@ -1,3 +1,4 @@
+import { authAPI } from '@/services/api';
 import { Image } from 'expo-image';
 import { useState } from 'react';
 import { StyleSheet } from 'react-native';
@@ -48,6 +49,33 @@ export default function HomeScreen() {
           onPress={() => setShowAnswer(false)}
         >
           Next Card
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText
+          style={{ fontSize: 18, textAlign: 'center', backgroundColor: '#FF6B35', color: 'white', padding: 15, borderRadius: 8 }}
+          /*
+          onPress={async () => {
+            try {
+              console.log('Testing API connection...');
+              const result = await authAPI.login('test@example.com', 'password123');
+              console.log('API Success:', result);
+            } catch (error) {
+              console.log('API Error:', error);
+            }
+          }}*/
+
+            onPress={async () => {
+  try {
+    console.log('Testing registration...');
+    const result = await authAPI.register('test1@example.com', 'testuser1', 'TestPassword123!');
+    console.log('Registration Success:', result);
+  } catch (error) {
+    console.log('Registration Error:', error);
+  }
+}}
+        >
+          Test API Connection
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
